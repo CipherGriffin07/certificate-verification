@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build --workspace=@midnight-ntwrk/bboard-ui",
+  "outputDirectory": "certificate-verification-ui/dist",
+  "installCommand": "npm install",
+  "framework": null,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
