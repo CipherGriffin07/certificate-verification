@@ -2,17 +2,35 @@
 
 ### Privacy-Preserving Certificate Verification on Midnight Network
 
-CertiGuard is a decentralized certificate verification DApp built on the **Midnight Network**. It allows organizations to issue, verify, and revoke certificates while using cryptographic fingerprints instead of exposing complete certificate information on-chain.
+CertiGuard is a decentralized certificate verification DApp built on the **Midnight Network**. It enables organizations to issue, verify, and revoke certificates using cryptographic fingerprints while reducing the need to expose complete certificate information on-chain.
 
-The application combines a **Compact smart contract**, **Midnight.js**, **React**, **TypeScript**, and **Lace Wallet** to provide a privacy-focused certificate verification system.
+The application combines **Compact smart contracts**, **Midnight.js**, **React**, **TypeScript**, and **Lace Wallet** to provide a privacy-focused and tamper-resistant certificate verification system.
+
+---
+
+## 🌍 Live Demo
+
+**Vercel:** **Pending**
+
+> The live CertiGuard Vercel URL will be added after frontend deployment.
+
+---
+
+## 📜 Contract Address
+
+| Network | Contract Address |
+|---|---|
+| Midnight Preprod | **Pending** |
+
+> The final Midnight Preprod contract deployment is pending. The deployed contract address will be added here after successful deployment.
 
 ---
 
 ## 📌 Problem Statement
 
-Fake academic and professional certificates are difficult to detect using traditional verification systems.
+Fake academic and professional certificates can be difficult and time-consuming to verify using traditional systems.
 
-Centralized certificate databases also introduce problems such as:
+Centralized certificate databases may also introduce problems such as:
 
 - Single points of failure
 - Dependence on the issuing organization
@@ -20,23 +38,38 @@ Centralized certificate databases also introduce problems such as:
 - Possibility of record manipulation
 - Exposure of unnecessary personal information
 
-CertiGuard addresses these problems by using blockchain-based verification while storing only a cryptographic fingerprint of certificate information on-chain.
+CertiGuard addresses these challenges by using blockchain-based verification while representing certificate information through a cryptographic fingerprint.
 
 ---
 
 ## ✨ Features
 
-- Issue certificates through a Midnight smart contract
-- Verify certificate authenticity
-- Revoke previously issued certificates
-- SHA-256 certificate fingerprinting
-- Midnight-compatible wallet integration
-- Lace Wallet support
-- Privacy-preserving issuer authentication
-- Join an existing deployed verification contract
-- Responsive React user interface
-- Loading and error handling
-- On-chain certificate status management
+- 📜 Issue certificates through a Midnight smart contract
+- 🔍 Verify certificate authenticity
+- 🚫 Revoke previously issued certificates
+- 🔐 SHA-256 certificate fingerprinting
+- 🌙 Midnight Network integration
+- 👛 Lace Wallet integration
+- 🛡️ Privacy-preserving issuer authentication
+- 🔗 Join an existing verification contract
+- 💻 Responsive React user interface
+- ⏳ Transaction loading states
+- ⚠️ Error handling and user feedback
+- ⛓️ On-chain certificate status management
+
+---
+
+## 📸 UI Screenshots
+
+### CertiGuard Home Page
+
+![CertiGuard Home Page](./screenshots/certiguard-home.png)
+
+### Lace Wallet Integration
+
+![Lace Wallet Integration](./screenshots/lace-wallet.png)
+
+> Screenshots demonstrate the CertiGuard interface and Lace Wallet integration.
 
 ---
 
@@ -44,24 +77,25 @@ CertiGuard addresses these problems by using blockchain-based verification while
 
 | Technology | Purpose |
 |---|---|
-| Midnight Network | Privacy-preserving blockchain |
-| Compact | Smart contract development |
-| Midnight.js | DApp and blockchain integration |
-| React | Frontend development |
-| TypeScript | Application logic |
-| Material UI | UI components and styling |
-| Vite | Frontend build tooling |
-| Lace Wallet | Midnight wallet integration |
-| SHA-256 | Certificate fingerprint generation |
-| Node.js | JavaScript runtime |
-| npm | Package management |
-| Git & GitHub | Version control |
+| **Midnight Network** | Privacy-preserving blockchain |
+| **Compact** | Smart contract development |
+| **Midnight.js** | DApp and blockchain integration |
+| **React** | Frontend development |
+| **TypeScript** | Application logic |
+| **Material UI** | UI components and styling |
+| **Vite** | Frontend build tooling |
+| **Lace Wallet** | Midnight wallet integration |
+| **SHA-256** | Certificate fingerprint generation |
+| **Node.js** | JavaScript runtime |
+| **npm** | Package management |
+| **Git & GitHub** | Version control |
+| **Vercel** | Frontend deployment |
 
 ---
 
 ## 🏗️ Architecture
 
-CertiGuard is divided into four main components:
+CertiGuard consists of four main application components:
 
 ```text
                      ┌─────────────────────┐
@@ -111,21 +145,21 @@ Student Name | Course | Certificate ID | Issue Date
 
 The frontend converts the certificate information into a SHA-256 fingerprint.
 
-Conceptually:
-
 ```text
 Certificate Information
-        ↓
-      SHA-256
-        ↓
+          ↓
+       SHA-256
+          ↓
 Cryptographic Fingerprint
+          ↓
+ Midnight Smart Contract
 ```
 
-The original certificate text does not need to be stored directly on the blockchain.
+This allows certificate verification to use a deterministic fingerprint rather than relying on the complete certificate text as the verification identifier.
 
 ### 3. Issue Certificate
 
-The certificate fingerprint is submitted to the Compact smart contract.
+The certificate fingerprint is submitted through the application to the Compact smart contract.
 
 The contract records the certificate state as valid.
 
@@ -133,15 +167,15 @@ The contract records the certificate state as valid.
 
 A verifier enters the certificate information.
 
-CertiGuard generates the SHA-256 fingerprint again and checks it against the contract state.
+CertiGuard generates the SHA-256 fingerprint again and checks the certificate through the smart contract.
 
-If the information matches a valid certificate:
+For a valid certificate:
 
 ```text
 ✅ Genuine Certificate
 ```
 
-Otherwise:
+For an invalid, modified, or revoked certificate:
 
 ```text
 ❌ Fake, Revoked, or Incorrect Certificate
@@ -151,24 +185,26 @@ Otherwise:
 
 An authorized issuer can revoke an issued certificate.
 
-After revocation, the certificate will no longer be considered valid.
+After revocation, the certificate is no longer considered valid.
 
 ---
 
-# 🚀 Installation and Setup
+# 🚀 Installation & Setup
 
 ## Prerequisites
 
 Before running CertiGuard, install:
 
-- Git
-- Node.js
-- npm
+- **Git**
+- **Node.js**
+- **npm**
+- **WSL** if developing on Windows
+- **Docker Desktop**
 - Midnight development dependencies
 - A Chromium-based browser
-- Lace Wallet with Midnight support
+- **Lace Wallet** with Midnight support
 
-You should also have access to the Midnight Preprod environment when performing blockchain operations.
+For blockchain transactions, access to the **Midnight Preprod** environment is required.
 
 ---
 
@@ -178,7 +214,7 @@ You should also have access to the Midnight Preprod environment when performing 
 git clone https://github.com/CipherGriffin07/certificate-verification.git
 ```
 
-Move into the project:
+Enter the project:
 
 ```bash
 cd certificate-verification
@@ -186,7 +222,24 @@ cd certificate-verification
 
 ---
 
-## 2. Install Root Dependencies
+## 2. Select the Node.js Version
+
+If using NVM:
+
+```bash
+nvm use
+```
+
+If the required Node version is not installed:
+
+```bash
+nvm install
+nvm use
+```
+
+---
+
+## 3. Install Root Dependencies
 
 ```bash
 npm install
@@ -194,7 +247,7 @@ npm install
 
 ---
 
-## 3. Install Contract Dependencies
+## 4. Install Contract Dependencies
 
 ```bash
 cd contract
@@ -204,7 +257,7 @@ cd ..
 
 ---
 
-## 4. Install API Dependencies
+## 5. Install API Dependencies
 
 ```bash
 cd api
@@ -214,7 +267,7 @@ cd ..
 
 ---
 
-## 5. Install CLI Dependencies
+## 6. Install CLI Dependencies
 
 ```bash
 cd certificate-verification-cli
@@ -224,7 +277,7 @@ cd ..
 
 ---
 
-## 6. Install Frontend Dependencies
+## 7. Install Frontend Dependencies
 
 ```bash
 cd certificate-verification-ui
@@ -234,9 +287,45 @@ cd ..
 
 ---
 
+# 🔨 Build the Project
+
+## Build Contract
+
+```bash
+cd contract
+npm run build
+cd ..
+```
+
+## Build API
+
+```bash
+cd api
+npm run build
+cd ..
+```
+
+## Build CLI
+
+```bash
+cd certificate-verification-cli
+npm run build
+cd ..
+```
+
+## Build Frontend
+
+```bash
+cd certificate-verification-ui
+npm run build
+cd ..
+```
+
+---
+
 # 💻 Running the Frontend
 
-Move to the frontend:
+Move to the frontend directory:
 
 ```bash
 cd certificate-verification-ui
@@ -262,50 +351,49 @@ http://127.0.0.1:8080
 
 Open the displayed address in your browser.
 
-> The exact port may vary depending on the local environment.
+> The exact address or port may vary depending on your local environment.
 
 ---
 
 # 👛 Lace Wallet Setup
 
-CertiGuard requires a Midnight-compatible wallet for blockchain transactions.
+CertiGuard uses a Midnight-compatible wallet for blockchain interactions.
 
-1. Install the Lace browser extension.
+1. Install Lace Wallet in a Chromium-based browser.
 2. Open Lace Wallet.
-3. Configure Midnight.
+3. Configure Midnight support.
 4. Select the **Preprod** network.
-5. Ensure the wallet is synchronized.
-6. Open CertiGuard.
-7. Click **Create Contract**.
-8. Authorize the DApp when Lace requests permission.
-
-The application can then communicate with the wallet through the Midnight wallet connector.
+5. Allow the wallet to synchronize completely.
+6. Open the CertiGuard application.
+7. Click **Create Contract** or **Join Contract**.
+8. Authorize the application when Lace Wallet requests permission.
+9. Review and approve the required transaction when prompted.
 
 ---
 
 # 🌙 Midnight Configuration
 
-For the current development configuration:
+Current development network:
 
 ```text
-Network: Preprod
+Midnight Preprod
 ```
 
-The application communicates with Midnight infrastructure through the configured Midnight.js providers.
+The application communicates with Midnight infrastructure through Midnight.js providers.
 
-For proof generation, the environment may use either a local or remote proof server depending on configuration.
+Proof generation may use the configured Midnight proof-server environment.
 
 ---
 
 # 📜 Smart Contract
 
-The primary Compact contract is located at:
+The main Compact contract is located at:
 
 ```text
 contract/src/certificate-verification.compact
 ```
 
-The contract implements three principal certificate operations:
+The certificate verification contract implements three main operations:
 
 ```text
 issueCertificate
@@ -315,15 +403,15 @@ revokeCertificate
 
 ### `issueCertificate`
 
-Registers the cryptographic fingerprint of a certificate.
+Registers the cryptographic fingerprint of certificate information.
 
 ### `verifyCertificate`
 
-Checks whether the supplied certificate fingerprint corresponds to the currently valid certificate state.
+Checks certificate information against the current contract state.
 
 ### `revokeCertificate`
 
-Allows the authorized issuer to revoke a certificate.
+Allows an authorized issuer to revoke a valid certificate.
 
 ---
 
@@ -333,7 +421,7 @@ Privacy is a core design goal of CertiGuard.
 
 ## Public Information
 
-The blockchain may contain information required for certificate verification, including:
+Information required by the contract may include:
 
 - Certificate fingerprint/hash
 - Certificate status
@@ -342,15 +430,13 @@ The blockchain may contain information required for certificate verification, in
 
 ## Private Information
 
-Sensitive issuer information remains private.
-
-The issuer's secret key is maintained in private state and is not intentionally stored publicly on the ledger.
+Sensitive issuer information is maintained in private state rather than intentionally exposed publicly.
 
 ## Privacy-Preserving Authorization
 
-The issuer proves that they are authorized to perform protected contract operations using the application's private witness mechanism.
+The application uses Midnight's private-state and witness mechanism for issuer authorization.
 
-The secret itself does not need to be publicly revealed for authorization.
+This enables authorization logic without requiring the issuer's secret itself to be deliberately published as public certificate data.
 
 ---
 
@@ -361,39 +447,27 @@ certificate-verification/
 │
 ├── api/
 │   └── src/
-│       ├── common-types.ts
-│       ├── index.ts
-│       └── utils/
 │
 ├── certificate-verification-cli/
-│   ├── src/
-│   │   ├── config.ts
-│   │   ├── generate-dust.ts
-│   │   ├── index.ts
-│   │   ├── launcher/
-│   │   ├── midnight-wallet-provider.ts
-│   │   └── wallet-utils.ts
-│   └── package.json
+│   └── src/
 │
 ├── certificate-verification-ui/
 │   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── config/
-│   │   ├── contexts/
-│   │   ├── hooks/
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   ├── index.html
-│   └── package.json
+│   └── src/
+│       ├── components/
+│       ├── config/
+│       ├── contexts/
+│       └── hooks/
 │
 ├── contract/
-│   ├── src/
-│   │   ├── certificate-verification.compact
-│   │   ├── index.ts
-│   │   ├── witnesses.ts
-│   │   └── test/
-│   └── package.json
+│   └── src/
+│       ├── certificate-verification.compact
+│       ├── index.ts
+│       └── witnesses.ts
+│
+├── screenshots/
+│   ├── certiguard-home.png
+│   └── lace-wallet.png
 │
 ├── README.md
 ├── package.json
@@ -406,21 +480,19 @@ certificate-verification/
 
 ## Create a Verification Contract
 
-Open the application and select:
+Open CertiGuard and click:
 
 ```text
 Create Contract
 ```
 
-Authorize CertiGuard through the connected Lace wallet.
-
-The application will attempt to deploy a new certificate verification contract.
+Authorize the application through the connected Lace Wallet.
 
 ---
 
 ## Join an Existing Contract
 
-Select:
+Click:
 
 ```text
 Join Contract
@@ -428,18 +500,14 @@ Join Contract
 
 Enter the address of an existing CertiGuard contract.
 
-The frontend will connect to that deployed contract.
-
 ---
 
 ## Issue a Certificate
 
-Enter the certificate information into the certificate details field.
-
-Example:
+Enter certificate information such as:
 
 ```text
-Snehali Dey | Blockchain Development | CERT-001 | 2026
+Student Name | Blockchain Development | CERT-001 | 2026
 ```
 
 Click:
@@ -448,13 +516,13 @@ Click:
 Issue Certificate
 ```
 
-The application hashes the information and submits the fingerprint through the smart contract.
+CertiGuard generates the certificate fingerprint and submits the operation through the DApp.
 
 ---
 
 ## Verify a Certificate
 
-Enter exactly the same certificate information and click:
+Enter the same certificate information and click:
 
 ```text
 Verify
@@ -466,7 +534,7 @@ A successful verification displays:
 ✅ Genuine certificate
 ```
 
-An invalid, changed, or revoked certificate displays:
+An invalid or revoked certificate displays:
 
 ```text
 ❌ Fake, revoked, or incorrect certificate
@@ -476,7 +544,7 @@ An invalid, changed, or revoked certificate displays:
 
 ## Revoke a Certificate
 
-When the connected wallet is authorized as the issuer and the certificate is currently valid, select:
+When the connected wallet is authorized as the issuer and the certificate is valid, click:
 
 ```text
 Revoke
@@ -486,23 +554,30 @@ The certificate state is changed to revoked.
 
 ---
 
-# 🌐 Contract Address
+# ☁️ Vercel Deployment
 
-| Network | Contract Address |
-|---|---|
-| Preprod | `<PENDING>` |
+The CertiGuard frontend is intended to be deployed using Vercel.
 
-A final deployed contract address should be inserted here after successful Preprod deployment.
+**Live URL:** **Pending**
+
+The public Vercel deployment URL will be added here after successful frontend deployment.
 
 ---
 
 # ⚠️ Current Deployment Status
 
-The application, smart contract integration, API, CLI, and frontend have been implemented.
+| Component | Status |
+|---|---|
+| Compact Smart Contract | ✅ Implemented |
+| API Integration | ✅ Implemented |
+| CLI | ✅ Implemented |
+| CertiGuard Frontend | ✅ Implemented |
+| Lace Wallet Integration | ✅ Implemented |
+| Local Build | ✅ Working |
+| Midnight Preprod Contract Address | ⏳ Pending |
+| Vercel Live Deployment | ⏳ Pending |
 
-Final successful Preprod contract deployment depends on the availability and configuration of the Midnight Preprod wallet, proof server, and required network resources.
-
-Therefore, the repository does not include a fabricated deployment address.
+> No fabricated contract address or deployment URL is included. Pending items will be updated after successful deployment.
 
 ---
 
@@ -516,7 +591,7 @@ npm run build
 npm run start
 ```
 
-For Git version control:
+To commit changes:
 
 ```bash
 git add .
@@ -528,16 +603,14 @@ git push
 
 # 🎯 Future Improvements
 
-Potential extensions include:
-
 - Multiple certificates per issuer
-- Institution dashboards
+- Institution dashboard
 - QR-code certificate verification
 - Certificate PDF upload and fingerprinting
 - Batch certificate issuance
 - Multiple issuer support
 - Verification history
-- Improved decentralized identity integration
+- Decentralized identity integration
 - Public verification portal
 - Production Midnight deployment
 
@@ -553,4 +626,4 @@ GitHub: **CipherGriffin07**
 
 # 📄 License
 
-This project is developed as a demonstration of privacy-preserving certificate verification using the Midnight Network.
+This project was developed as a demonstration of privacy-preserving certificate verification using the Midnight Network.
