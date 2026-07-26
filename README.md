@@ -490,7 +490,7 @@ The certificate state is changed to revoked.
 
 | Network | Contract Address |
 |---|---|
-| Preprod | `<YOUR_DEPLOYED_CONTRACT_ADDRESS>` |
+| Preprod | `<PENDING>` |
 
 A final deployed contract address should be inserted here after successful Preprod deployment.
 
