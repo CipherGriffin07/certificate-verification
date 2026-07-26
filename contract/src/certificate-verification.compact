@@ -1,0 +1,85 @@
+pragma language_version 0.23;
+
+import CompactStandardLibrary;
+
+export enum CertificateState {
+  EMPTY,
+  VALID,
+  REVOKED
+}
+
+export ledger state: CertificateState;
+
+export ledger certificateHash: Maybe<Bytes<32>>;
+
+export ledger sequence: Counter;
+
+export ledger issuer: Bytes<32>;
+
+witness issuerSecretKey(): Bytes<32>;
+
+constructor() {
+  state = CertificateState.EMPTY;
+  certificateHash = none<Bytes<32>>();
+  sequence.increment(1);
+}
+
+export circuit issueCertificate(newCertificateHash: Bytes<32>): [] {
+  assert(
+    state == CertificateState.EMPTY,
+    "A certificate has already been issued"
+  );
+
+  issuer = disclose(
+    publicKey(issuerSecretKey(), sequence as Field as Bytes<32>)
+  );
+
+  certificateHash = disclose(
+    some<Bytes<32>>(newCertificateHash)
+  );
+
+  state = CertificateState.VALID;
+}
+
+export circuit verifyCertificate(givenHash: Bytes<32>): [] {
+  assert(
+    state == CertificateState.VALID,
+    "Certificate is not valid"
+  );
+
+  assert(
+    certificateHash.value == disclose(givenHash),
+    "Certificate does not match"
+  );
+}
+
+export circuit revokeCertificate(): [] {
+  assert(
+    state == CertificateState.VALID,
+    "Certificate is not currently valid"
+  );
+
+  assert(
+    issuer ==
+      publicKey(
+        issuerSecretKey(),
+        sequence as Field as Bytes<32>
+      ),
+    "Only the issuer can revoke this certificate"
+  );
+
+  state = CertificateState.REVOKED;
+}
+
+export circuit publicKey(
+  sk: Bytes<32>,
+  sequenceNumber: Bytes<32>
+): Bytes<32> {
+  return persistentHash<Vector<3, Bytes<32>>>(
+    [
+      pad(32, "certificate:pk:"),
+      sequenceNumber,
+      sk
+    ]
+  );
+}
