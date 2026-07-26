@@ -10,9 +10,9 @@ The application combines **Compact smart contracts**, **Midnight.js**, **React**
 
 ## 🌍 Live Demo
 
-**Vercel:** **Pending**
+**Vercel:** https://certificate-verification-zeta.vercel.app
 
-> The live CertiGuard Vercel URL will be added after frontend deployment.
+> The CertiGuard frontend is live and deployed on Vercel.
 
 ---
 
@@ -558,9 +558,9 @@ The certificate state is changed to revoked.
 
 The CertiGuard frontend is intended to be deployed using Vercel.
 
-**Live URL:** **Pending**
+**Live URL:** https://certificate-verification-zeta.vercel.app
 
-The public Vercel deployment URL will be added here after successful frontend deployment.
+The CertiGuard frontend is successfully deployed and publicly accessible through Vercel.
 
 ---
 
@@ -575,9 +575,9 @@ The public Vercel deployment URL will be added here after successful frontend de
 | Lace Wallet Integration | ✅ Implemented |
 | Local Build | ✅ Working |
 | Midnight Preprod Contract Address | ⏳ Pending |
-| Vercel Live Deployment | ⏳ Pending |
+| Vercel Live Deployment | ✅ Live |
 
-> No fabricated contract address or deployment URL is included. Pending items will be updated after successful deployment.
+> The Midnight Preprod contract address remains pending. The CertiGuard frontend is successfully deployed on Vercel.
 
 ---
 
