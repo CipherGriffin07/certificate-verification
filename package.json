@@ -13,8 +13,7 @@
   "certificate-verification-ui",
   "api",
   "contract"
-]
-  },
+],
   "dependencies": {
     "@midnight-ntwrk/dapp-connector-api": "4.0.1",
     "@midnight-ntwrk/midnight-js-contracts": "4.1.1",
